@@ -1,0 +1,213 @@
+
+
+/* COLOR SCHEME */
+
+:root {
+    --main-color: #0da4d3;
+    --main-color-dark: #0c99c6;
+    --secondary-color: #aaa;
+    --main-font: 'Bitter', serif;
+}
+
+
+/* BODY */
+body {
+  font-family: var(--main-font);
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+
+/* HEADERS */
+
+h1 {
+  font-weight: 100;
+  font-size: 35px;
+  margin-top: 4%;
+  margin-bottom: 4%;
+  color: var(--main-color);
+}
+
+h1 .divider {
+	margin: 0 8px;
+    color: var(--secondary-color);
+}
+
+h1 .sub-headline {
+	color: var(--secondary-color);
+	font-weight: 300;
+}
+
+h2 {
+  color: var(--secondary-color);
+  font-weight: 100;
+  font-size: 20px;
+  margin-top: 50px;
+  margin-bottom: 2%;
+}
+
+.filter-header{
+  color: #000000;
+  margin-top: 3%;
+}
+
+/* ROWS */
+.bottomrow {
+    margin-bottom: 2%;
+  }
+
+
+/* MAP */
+#maprow {
+    text-align: center;
+
+}
+
+#map {
+        width: 100%;
+        height: 600px;
+        display: inline-block;
+        margin-bottom: 5%;
+        padding-bottom: 5%;
+}
+
+/* MAP POP UPS */
+#market-name-popup {
+    font-family: var(--main-font);
+    color: var(--main-color);
+      font-size: 20px;
+
+}
+
+#market-details-popup {
+
+    color: #616161;
+    font-weight: bold;
+
+}
+
+#pop-up-text {
+  font-size: 15px;
+  font-family: var(--main-font);
+
+}
+
+
+/* TOGGLE BUTTON STYLE */
+.btn-secondary {
+margin-bottom: 10px;
+}
+
+.toggle.ios, .toggle-on.ios, .toggle-off.ios {
+
+    border-color:#BDBDBD;
+    margin-top: 1%;
+    background-color: var(--main-color);
+
+  }
+  .toggle.ios .toggle-handle {
+    background-color: white;
+    border-color: #BDBDBD;
+
+   }
+
+  .form-check-label {
+      color: var(--secondary-color);
+  }
+
+  .toggle-off {
+    background-color: #E0E0E0;
+  }
+
+  .toggle-on {
+
+      background-color: var(--main-color);
+  }
+
+.btn:hover {
+    background-color: #BDBDBD;
+}
+
+  .btn-primary:hover {
+    color: #fff;
+    background-color: var(--main-color-dark);
+
+}
+
+
+
+/* RESULTS PANEL */
+
+.result-list-group{
+    max-height: 200px;
+    margin-bottom: 10px;
+    overflow:scroll;
+    -webkit-overflow-scrolling: touch;
+}
+
+a {
+  color: var(--secondary-color);
+  text-decoration: none;
+}
+
+a:hover {
+color: var(--main-color);
+text-decoration: none;
+}
+
+.panel-body {
+  margin-bottom: 4%;
+
+}
+
+.panel-title {
+  margin-top: 4%;
+  padding-top: 4%;
+}
+
+/* Dropdown Button */
+.dropbtn {
+    background-color: var(--main-color);
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+    margin-top: 2%;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 100%;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: var(--main-color-dark);}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block;}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {background-color: var(--main-color-dark);}
