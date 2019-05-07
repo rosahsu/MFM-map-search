@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mass Farmers Market Association Map</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bootstrap-toggle.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter">
+
+
+
+</head>
+<body>
+
+<div class="container">
+    <h1>mass farmers markets
+        <span class="divider"> / </span>
+        <span class="sub-headline">
+         market locations
+        </span>
+    </h1>
+
+    <div class="row">
+        <div class="col-md-6">
+            <h2  class="filter-header">   What services are you looking for? </h2>
+            <div class="row">
+                <div class="col-md-2">
+                    <input type="checkbox" data-toggle="toggle" id="SNAPEBT" onchange=filter(this) data-on=" " data-off=" " data-style="ios" >
+                    <label class="form-check-label" for="SNAPEBT">
+                        SNAP
+                    </label>
+                </div>
+                <div class="col-md-2">
+                    <input type="checkbox" data-toggle="toggle" id="HIP" onchange=filter(this) data-on=" " data-off=" " data-style="ios" >
+                    <label class="form-check-label" for="HIP">
+                        HIP
+                    </label>
+                </div>
+                <div class="col-md-2">
+                    <input type="checkbox" data-toggle="toggle" id="SNAPMATCH" onchange=filter(this) data-on=" " data-off=" " data-style="ios" >
+                    <label class="form-check-label" for="SNAPMATCH">
+                        SNAP Match
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <h2  class="filter-header">   Are you looking for a winter market? </h2>
+            <div class="row">
+                <div class="col-md-2">
+                    <input type="checkbox" data-toggle="toggle" id="Winter" onchange=filter(this) data-on=" " data-off=" " data-style="ios" >
+                    <label class="form-check-label" for="Winter">
+                        Winter Markets
+                    </label>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <h2 class="filter-header">   What days of the week do you want to go? </h2>
+    <div class="row bottomrow">
+        <div class="col-md-1">
+            <input type="checkbox" data-toggle="toggle" id="Monday" onchange=filter(this) data-on=" " data-off=" " data-style="ios"  >
+            <label class="form-check-label" for="Monday">
+                Monday
+            </label>
+        </div>
+
+        <div class="col-md-1">
+            <input type="checkbox" data-toggle="toggle" id="Tuesday" onchange=filter(this) data-on=" " data-off=" " data-style="ios"  >
+            <label class="form-check-label" for="Tuesday">
+                Tuesday
+            </label>
+        </div>
+
+        <div class="col-md-1">
+            <input type="checkbox" data-toggle="toggle" id="Wednesday" onchange=filter(this) data-on=" " data-off=" " data-style="ios"  >
+            <label class="form-check-label" for="Wednesday">
+                Wednesday
+            </label>
+        </div>
+
+        <div class="col-md-1">
+            <input type="checkbox" data-toggle="toggle" id="Thursday" onchange=filter(this) data-on=" " data-off=" " data-style="ios"  >
+            <label class="form-check-label" for="Thursday">
+                Thursday
+            </label>
+        </div>
+
+        <div class="col-md-1">
+            <input type="checkbox" data-toggle="toggle" id="Friday" onchange=filter(this) data-on=" " data-off=" " data-style="ios"  >
+            <label class="form-check-label" for="Friday">
+                Friday
+            </label>
+        </div>
+
+        <div class="col-md-1">
+            <input type="checkbox" data-toggle="toggle" id="Saturday" onchange=filter(this) data-on=" " data-off=" " data-style="ios"  >
+            <label class="form-check-label" for="Saturday">
+                Saturday
+            </label>
+        </div>
+
+        <div class="col-md-1">
+            <input type="checkbox" data-toggle="toggle" id="Sunday" onchange=filter(this) data-on=" " data-off=" " data-style="ios"  >
+            <label class="form-check-label" for="Sunday">
+                Sunday
+            </label>
+        </div>
+
+    </div>
+
+
+
+    <!-- Placeholder for adding new buttons. Copy the code in the google doc or README file here! -->
+
+    <div class="row align-items-left maprow">
+        <div class="col-md-9">
+            <div id="map"></div>
+        </div>
+        <div class="col-md-3">
+            <div class="panel panel-primary">
+                <div class="row align-items-center">
+                    <div class="col-md-12">
+                        <div class="dropdown">
+                            <button class="dropbtn">distance from me &nbsp; <i class="fas fa-caret-down"></i></button>
+                            <div class="dropdown-content">
+                                <a onclick=filter(1,true)>1 mile</a>
+                                <a onclick=filter(5,true)>5 miles</a>
+                                <a onclick=filter(10,true)>10 miles</a>
+                                <a onclick=filter(20,true)>20 miles</a>
+                                <a onclick=filter(0,true)>∞ miles</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-heading container-fluid"><h1 class="panel-title">Results</h1>
+                </div>
+                <div class="panel-body">
+                    <ul class="list-group" id="result_list" style="overflow: scroll;max-height: 450px;"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<!-- Load JS libraries: jQuery, bootstrap,  -->
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<!-- thanks to http://www.bootstraptoggle.com for toggle style -->
+<script src="js/bootstrap-toggle.min.js"></script>
+
+
+<script src="js/papaparse.min.js"></script>
+<script>
+    /**
+     * Returns distance between two latitudes and longitudes
+     * lat1, lon1, lat2, lon2 - Latitudes and longitudes of two points, in degree form
+     * unit - 'K' for kilometers, 'N' for nautical miles, leave empty for miles
+     */
+    function getDistance(lat1, lon1, lat2, lon2, unit) {
+        if ((lat1 == lat2) && (lon1 == lon2)) {
+            return 0;
+        }
+        else {
+            var R = 3959 //miles
+            var rad1 = Math.radians(lat1);
+            var rad2 = Math.radians(lat2);
+            var deltaLat = Math.radians(lat2-lat1);
+            var deltaLong = Math.radians(lon2-lon1);
+
+            var a = Math.sin(deltaLat/2) * Math.sin(deltaLat/2) +
+                Math.cos(rad1) * Math.cos(rad2) *
+                Math.sin(deltaLong/2) * Math.sin(deltaLong/2);
+            var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+
+            var d = R * c;
+            if (unit=="K") { d = d * 1.609344 }
+            if (unit=="N") { d = d * 0.8684 }
+            return d;
+        }
+    }
+    // Converts from degrees to radians.
+    Math.radians = function(degrees) {
+        return degrees * Math.PI / 180;
+    };
+
+    // Converts from radians to degrees.
+    Math.degrees = function(radians) {
+        return radians * 180 / Math.PI;
+    };
+
+    /**
+     * Filters out markers outside a certain radius (in mi)
+     * userLat: latitude of user
+     * userLon: longitude of user
+     * radius: radius of to filter (in mi)
+     */
+    function distanceFilter(radius){
+        resetMarkers();
+        filters_applied[0] = radius;
+        if(radius > 0) {
+            for (var i = 0; i < markers.length; i++){
+                if(!inRange(i, radius)){
+                    markers[i].setMap(null);
+                }
+            }
+        }
+        updateResults();
+    }
+    /**
+     * Filters out selected attributes
+     */
+
+    function inRange(index, radius){
+
+        return getDistance(userLocation.lat, userLocation.lng, data[index].Latitude, data[index].Longitude) < radius
+
+    }
+    var filters_applied = []; //keeping track of which filters have been applied
+    filters_applied.push(0); //First index is of distance filter (-1 = no filter
+    //buttonList passed into filterList
+
+    function filterList(buttonList) {//filters based on buttons used
+        distanceFilter(filters_applied[0]);
+        for (var filter = 1; filter < buttonList.length; filter ++) {
+            var current_filter = buttonList[filter];
+            console.log("current filter" , current_filter);
+            for (var i = 0; i < data.length; i ++) {
+                if (data[i][current_filter] == 0) {
+                    markers[i].setMap(null);
+                }
+            }
+        }
+    }
+    function arrayRemove(arr, value) {
+        var new_array = [];
+        for (var i = 0 ; i < arr.length;i ++) {
+            if (arr[i] != value) {
+                new_array.push(arr[i])
+            }
+        }
+        return new_array;
+
+
+
+    }
+
+    function filter(button, isDistance=false) {
+        if (isDistance) {
+            filters_applied[0] = button;
+            filterList(filters_applied);
+        } else {
+            if (document.getElementById(button.id).checked == false) {
+                filters_applied = arrayRemove(filters_applied, button.id); //remove from buttons used
+
+
+                for (var i = 0; i < data.length; i++) {
+                    if (data[i][button.id] == 0 && inRange(i, filters_applied[0])) { //undo filter that was toggled
+                        markers[i].setMap(map);
+                    }
+
+                }
+                filterList(filters_applied); //re-apply based on new filter list
+            } else {
+                filters_applied.push(button.id); //add to list of filter buttons used
+                filterList(filters_applied);
+            }
+        }
+        updateResults();
+    }
+
+    function clearResults(){
+        panel = document.getElementById("result_list");
+        children = panel.children;
+        for(var i = 0; i < children.length; i++){
+            panel.removeChild(children.item(i));
+            i=i-1;
+        }
+    }
+
+    function updateResults(){
+        clearResults();
+        panel = document.getElementById("result_list");
+        for(var i = 0; i < markers.length; i++){
+            marker = markers[i];
+            if(marker.map != null){
+                var website = "http://" + data[i]["Website"];
+                result = document.createElement("a");
+                text = document.createTextNode(data[i]["Market Name"]);
+                result.href = website;
+                result.target = "_blank";
+                result.appendChild(text);
+                panel.appendChild(result);
+            }
+        }
+    }
+
+    function resetMarkers(){
+        for(var i = 0; i < markers.length; i++){
+            markers[i].setMap(map)
+        }
+        //filters_applied = [];
+    }
+
+    function createMarkers(){
+        for (var i = 0; i < data.length; i++) {
+            data[i].Latitude != 0 && data[i].Longitude != 0
+            var location = {lat: data[i].Latitude, lng: data[i].Longitude}; //Gets location of each farmer's market
+            var marker = new google.maps.Marker({
+                position: location,
+                map: map,
+                icon: "img/icon-blue.png"}) //Creates a marker and places it on the map
+            markers.push(marker);
+            //Stores marker in array
+
+            //info for creating info-window for each marker
+            var name = data[i]["Market Name"];
+            var days = data[i]["Days of Week"];
+            var open_time = data[i]["Open"];
+            var close_time = data[i]["Close"];
+            var start_date = data[i]["Start Date"];
+            var end_date = data[i]["End Date"];
+            var website = data[i]["Website"];
+            //var url = generate_map_url(data[i]["Address"]);
+
+            var contentString =  '<p id="market-name-popup">' + name + '</p>' +
+                '<p id="popup-text"> <span id= "market-details-popup"> Dates: </span> ' + start_date + "-" + end_date + '</p>' +
+                '<p id="popup-text"> <span id= "market-details-popup">Hours: </span> ' + open_time + "-" + close_time + '</p>' +
+                '<p id="popup-text"><span id= "market-details-popup"> Days Open:</span> ' + days + '</p>' +
+                '<p id="popup-text"><span id= "market-details-popup">Website: </span> ' + website + '</p>'
+            ;
+
+            var infowindow = new google.maps.InfoWindow ({
+                content : contentString
+            });
+            marker.infowindow = infowindow;
+            google.maps.event.addListener(marker,'mouseover',function() {
+                this.infowindow.open(map,this);
+
+
+            });
+            google.maps.event.addListener(marker,'mouseout',function() {
+                this.infowindow.close();
+            });
+            infowindows.push(infowindow);
+            /**var url_template =  "https://www.google.com/maps/dir/?api=1&origin="+userLocation.lat+","+
+             userLocation.lng +"&destination="+String(data[i].Latitude) +","+String(data[i].Longitude);
+             console.log("market:" , data[i]["Market Name"]);
+
+             marker.url = url_template;
+             market_URLs.push(url_template);
+
+             google.maps.event.addListener(marker, 'click', function () {
+                        window.open(this.url);
+                    });*/
+        }
+    }
+
+    function getUserLocation(){
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                userLocation = {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
+                };
+            });
+        } else {
+            console.log("No location available.");
+        }
+    }
+</script>
+<script>
+    var data;
+    var markers = []; //Empty array
+    var infowindows = [];
+    var market_URLs = []; //list of direction url for each market
+    var map;
+    var userLocation;
+
+
+    getUserLocation();
+    /**
+     * Initializes map with markers and data
+     */
+
+    function initMap() {
+        var csvFile = 'dataset.csv' //CSV  with farmer's market data
+        var boston = {lat: 42.359884, lng: -71.058813}; //Location of Boston
+        map = new google.maps.Map(
+            document.getElementById('map'), {zoom: 8, center: boston}); //Creates map centered on Boston
+        Papa.parse(csvFile, { //Gets data from the CSV
+            header: true,
+            download: true,
+            dynamicTyping: true,
+            skipEmptyLines: true,
+            complete: function (results) {
+                data = results.data;
+                createMarkers();
+                updateResults();
+            }
+
+        })
+    }
+
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDlg_RXppjqCe1dTW8XW2xBYgmq84-O-xQ&callback=initMap"
+        async defer></script>
+
+</body>
+</html>
